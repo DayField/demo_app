@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dialotel - Annonce{% endblock %}
+
+{% block body %}
+<div class='container'>
+    <h2>{{ ad.title }}</h2>
+    <div>{{ ad.description}}</div>
+    <span>Prix: {{ ad.price|format_currency('EUR') }}</span><br>
+    <span>Auteur: {{ ad.author.firstName }} {{ ad.author.lastName|first|upper }}.</span><br>
+    <a type="button" class="btn btn-primary" href={{ path('ad_start', { 'id': ad.id }) }}>Commencer la mission</a>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+<div class="col-md-4">
+    <div class="card bg-light mb-3">
+        <div class="card-header text-center">
+            <h4 class="card-title">
+                <a href={{ path('ad_infos', { 'id': ad.id }) }}>
+                    {{ad.title}}
+                </a>
+            </h4>
+            <span>Auteur: {{ ad.author.firstName }} {{ ad.author.lastName|first|upper }}.</span><br>
+            {% if ad.comments|length > 0 %}
+              {# TODO: 5 étoiles et remplir selon moyenne #}
+            {% else %}
+                <small>Pas encore noté(e)</small>
+            {% endif %}
+
+        </div>
+
+        <div class="card-body">
+          <div> 
+            {{ad.description}}<br><br>
+            <span>Prix: {{ ad.price|format_currency('EUR') }}</span><br>
+            <small>Publiée le: {{ ad.createdAt|date("d/m/Y") }}</small>
+          </div>
+                    
+            </a>
+             {% if app.user and app.user == ad.author %}
+                <a href={{ path('ad_edit', { 'id': ad.id }) }} class="btn btn-secondary">Modifier l'annonce</a>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
